@@ -15,3 +15,13 @@ This is my github repository following "CodeTrain's" Machine Learning playlist.
     - I'll be using VSCode (the kind of successor to Atom)
 - [] Server
     - Probably will use the live-server applet 
+
+----------------------------------------------------------------------------------------
+
+Scrap all of that. After doing a couple 'sketches' with p5.js, i've decided (before I do the Machine Learning Playlist), "Working with Data and APIs in Javascripts" first.
+
+Though I did make a really simple tweet bot which I hope to improve to later on.
+
+*Things I want to do*
+- [ ] Continue Working with Data and APIs in Javascript
+- [ ] 
