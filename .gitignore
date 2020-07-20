@@ -1,3 +1,6 @@
 **/libraries
 /WebSockets
 /Vectors
+**/node_modules
+/basicAPI/public/datafiles
+

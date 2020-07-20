@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>basicAPI</title>
+
+		<script src="libraries/p5.js"></script>
+		<script src="libraries/p5.dom.js"></script>
+		<script src="libraries/p5.sound.js"></script>
+		<script src="sketch.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
+			canvas {
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!--  1.1 fetch() -->
+
+		<!--
+	<img src ="#" id = "rainbow">
+	<script>
+		console.log('about to fetch a rainbow');
+		catchRainbow();
+		async function catchRainbow() {
+			const response = await fetch('rainbow.jpg'); // We can turn the response into a variable
+			const blob = await response.blob();
+			document.getElementById('rainbow').src = URL.createObjectURL(blob);
+		}
+	</script>
+-->
+		<!--  1.2 Tabular Data -->
+		<canvas id="myChart" width="800" height="400"
+			><p>If you see this, your browser does not support canvas.</p></canvas
+		>
+		<script>
+			let xlabels = [];
+			let ytemps = [];
+
+			chartIt();
+
+			async function chartIt() {
+				await getData();
+				console.log(xlabels);
+				console.log(ytemps);
+				var ctx = document.getElementById("myChart").getContext("2d");
+				var myChart = new Chart(ctx, {
+					type: "line",
+					data: {
+						labels: xlabels,
+						datasets: [
+							{
+								label: "Average Temperture over time",
+								data: ytemps,
+								backgroundColor: [
+									"rgba(255, 99, 132, 0.2)",
+									"rgba(54, 162, 235, 0.2)",
+									"rgba(255, 206, 86, 0.2)",
+									"rgba(75, 192, 192, 0.2)",
+									"rgba(153, 102, 255, 0.2)",
+									"rgba(255, 159, 64, 0.2)",
+								],
+								borderColor: [
+									"rgba(255, 99, 132, 1)",
+									"rgba(54, 162, 235, 1)",
+									"rgba(255, 206, 86, 1)",
+									"rgba(75, 192, 192, 1)",
+									"rgba(153, 102, 255, 1)",
+									"rgba(255, 159, 64, 1)",
+								],
+								borderWidth: 1,
+								fill: false,
+							},
+						],
+					},
+					options: {
+						responsive: false,
+						scales: {
+							yAxes: [
+								{
+									ticks: {
+										beginAtZero: false,
+									},
+								},
+							],
+						},
+						elements: {
+							line: {
+								tension: 0,
+							},
+						},
+					},
+				});
+			}
+
+			async function getData() {
+				// Grabs the response of test.csv
+				const response = await fetch("./datafiles/ZonAnn.Ts+dSST.csv");
+
+				// Grabs the data from the file
+				const data = await response.text();
+				//console.log(data);
+
+				// Parses the data by the newlines
+				const rows = data.split("\n").slice(1);
+				rows.forEach((row) => {
+					const elt = row.split(",");
+					// 24N-90N, 24S-24N, 90S-24S, 64N-90N, 44N-64N, 24N-44N, EQU-24N, 24S-EQU, 44S-24S, 64S-44S, 90S-64S
+					//console.log(elt);
+					let [
+						Year,
+						Glob,
+						NHem,
+						SHem,
+						one,
+						two,
+						three,
+						four,
+						five,
+						six,
+						seven,
+						eight,
+						nine,
+						ten,
+						eleven,
+					] = elt;
+					xlabels.push(Year);
+
+					ytemps.push(parseFloat(Glob, 10) + 14);
+				});
+			}
+		</script>
+	</body>
+</html>
