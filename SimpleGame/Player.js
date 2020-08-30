@@ -44,6 +44,7 @@ class Player {
 
 	consume() {
 		// If this radius is bigger than default size
+		console.log("Human is Shrinking");
 		if (this.r > 10) {
 			// Shrink the size
 			this.r *= .999;

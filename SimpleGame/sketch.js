@@ -9,18 +9,18 @@ let GravityAIs = [];
 
 const MAX_RADIUS = 100;
 
-const INIT_PELLET_NUM = 1000;
+const INIT_PELLET_NUM = 100;
 
 function setup() {
 	createCanvas(windowWidth, windowHeight);
 	background(100);
 
 	// Create the Player
-	//Player1 = new Player(windowWidth/2, windowHeight/2, 2, 2, 10);
-	//Players.push(Player1);
+	Player1 = new Player(windowWidth/2, windowHeight/2, 2, 2, 10);
+	Players.push(Player1);
 	
 	// Initial Generation of Pellets
-	//PopulatePellets(Pellets);
+	PopulatePellets(Pellets);
 
 	// Create Adversaries for the Player
 	//let FirstAI = new RandomAI();
@@ -146,7 +146,7 @@ function printScore()
 
 	for (let j = 0; j < GreedyAIs.length; j++)
 	{
-		output_string += `GreedyAIs[${j}]:${GreedyAIs[j].score} Radius ${GreedyAIs[j].r}\n`;
+		output_string += `GreedyAIs[${j}]:${GreedyAIs[j].score}\n`;
 	}
 
 	for (let i = 0; i < SpeedBasicAIs.length; i++)
