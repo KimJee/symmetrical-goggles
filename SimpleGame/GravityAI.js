@@ -154,7 +154,7 @@ class GravityAI {
 		// If this radius is bigger than default size
 		if (this.r > 10) {
 			// Shrink the size
-			//this.r *= 0.9999;
+			this.r *= 0.9999;
 		}
     }
     

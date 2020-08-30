@@ -47,7 +47,7 @@ class Player {
 		console.log("Human is Shrinking");
 		if (this.r > 10) {
 			// Shrink the size
-			this.r *= .999;
+			this.r *= 0.999;
 		}
 	}
 
